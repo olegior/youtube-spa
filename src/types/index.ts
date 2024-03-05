@@ -127,3 +127,6 @@ type CardData = {
 }
 
 export type CardItem = Item & CardData
+
+
+export type ModalHandler = (content: React.ReactNode, onOk: () => void) => void

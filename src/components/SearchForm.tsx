@@ -1,4 +1,4 @@
-import { Button, Form, Input, Modal, Space, Typography } from 'antd'
+import { Button, Form, Input, Space, Typography } from 'antd'
 import { FC, ChangeEvent, useState } from 'react'
 import { searchThunk, lastSearch } from '../redux/searchSlice';
 import { HeartOutlined, HeartTwoTone } from '@ant-design/icons';
@@ -7,6 +7,8 @@ import { ModalForm } from './ModalForm';
 import { addDocumentDB } from '../firebase/document';
 import { useAuth } from '../hooks/useAuth';
 import { useAppDispatch } from '../hooks/useAppDispatch';
+import { useOutletContext } from 'react-router-dom';
+import { ModalHandler } from '../types';
 
 export const SearchForm: FC = () => {
 
@@ -14,7 +16,6 @@ export const SearchForm: FC = () => {
     const [searchValue, setSearchValue] = useState<string>(lastSearchValue.query);
     const [successfulyAddedToFavorites, setSuccsessfulyAdddedToFavorites] = useState(false)
 
-    const [modal, modalContextHolder] = Modal.useModal();
     const [form] = Form.useForm();
     const { user } = useAuth();
 
@@ -33,6 +34,10 @@ export const SearchForm: FC = () => {
         })
     }
 
+    const content = <ModalForm form={form} title="Сохранить запрос?" readOnly />;
+
+    const modalHandler = useOutletContext<ModalHandler>();
+
     const handleAdd = () => {
 
         form.setFieldsValue({
@@ -42,15 +47,7 @@ export const SearchForm: FC = () => {
             order: 'relevance',
             maxResults: 12,
         })
-
-        modal.confirm({
-            cancelText: 'Отмена',
-            okText: 'Сохранить',
-            closable: true,
-            content: <ModalForm form={form} title="Сохранить запрос?" readOnly />,
-            onOk: addToFavorites,
-
-        })
+        modalHandler(content, addToFavorites)
     }
 
     const handleInputFinish = () => {
@@ -71,7 +68,7 @@ export const SearchForm: FC = () => {
                         <div className='search__item'>
                             {!!searchValue.length &&
                                 <Button type='text' className='search__add' onClick={handleAdd} >
-                                   {successfulyAddedToFavorites ? <HeartTwoTone className='heart'/> :  < HeartOutlined />}
+                                    {successfulyAddedToFavorites ? <HeartTwoTone className='heart' /> : < HeartOutlined />}
                                 </Button>}
                             <Input value={searchValue} onChange={handleInput} placeholder='ваш запрос...' />
                         </div>
@@ -81,7 +78,6 @@ export const SearchForm: FC = () => {
                     </Space.Compact>
                 </Form.Item>
             </Form>
-            {modalContextHolder}
         </div>
     )
 }
