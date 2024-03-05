@@ -1,22 +1,15 @@
 import { FC } from 'react'
 import { Avatar, Card, Image, Typography } from 'antd'
-import { duration, posted } from '../utils/moment.ts';
-import { Item } from '../types/index.ts'
+import { CardItem } from '../types/index.ts'
 
 const { Link, Text, } = Typography;
 
 type PropsType = {
-    item: Item
+    item: CardItem
 }
 
 export const GridVideoCard: FC<PropsType> = ({ item }) => {
-    const { contentDetails, snippet, statistics, channel } = item;
-
-    const watch = `${import.meta.env.VITE_YT_WATCH}${item.id}`;
-    const channelLink = `${import.meta.env.VITE_YT_CHANNEL}${snippet.channelId}`;
-
-    const videoDuration = duration(contentDetails.duration);
-    const publishedAt = posted(snippet.publishedAt);
+    const { snippet, channel, statistics, watch, channelLink, videoDuration, publishedAt } = item;
 
     return (
         <Card className='video-card' hoverable={true} bordered={false}

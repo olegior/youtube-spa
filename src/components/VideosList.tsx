@@ -2,10 +2,9 @@ import { List, Flex } from 'antd'
 import { FC } from 'react'
 import { Item } from '../types'
 import { InfitityScroll } from './InfitityScroll.tsx';
-import { GridVideoCard } from './GridVideoCard.tsx'
-import { ListVideoCard } from './ListVideoCard.tsx';
 import { useAppSelector } from '../hooks/useAppSelector.tsx';
 import { Spinner } from './Spinner.tsx';
+import { VideoCard } from './VideoCard.tsx';
 
 type PropsType = {
     items: Item[]
@@ -15,7 +14,6 @@ type PropsType = {
 export const VideosList: FC<PropsType> = ({ items }) => {
 
     const viewMode = useAppSelector(store => store.viewMode)
-    const CardType = viewMode === 'list' ? ListVideoCard : GridVideoCard;
     const isLoading = useAppSelector(state => state.search.isLoading);
 
     const grid = {
@@ -41,7 +39,7 @@ export const VideosList: FC<PropsType> = ({ items }) => {
                 renderItem={(item) => {
                     return (
                         <List.Item                         >
-                            <CardType item={item} />
+                            <VideoCard item={item} />
                         </List.Item>
                     )
                 }}>

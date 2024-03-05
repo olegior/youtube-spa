@@ -118,3 +118,12 @@ export type SearchSliceType = {
     lastSearch: RequestType
 }
 
+type CardData = {
+    watch: string, 
+    channelLink: string, 
+    videoDuration: string, 
+    publishedAt: string
+
+}
+
+export type CardItem = Item & CardData

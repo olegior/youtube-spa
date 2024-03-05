@@ -1,23 +1,16 @@
 import { FC } from 'react'
 import { Flex, Typography, Image } from 'antd';
-import { duration, posted } from '../utils/moment.ts';
-import { Item } from '../types';
+import { CardItem, } from '../types';
 
 
 type PropsType = {
-    item: Item
+    item: CardItem,
 }
 
 const { Link, Paragraph, Text } = Typography;
 
 export const ListVideoCard: FC<PropsType> = ({ item }) => {
-    const { contentDetails, snippet, statistics } = item;
-
-    const watch = `${import.meta.env.VITE_YT_WATCH}${item.id}`;
-    const channelLink = `${import.meta.env.VITE_YT_CHANNEL}${snippet.channelId}`;
-
-    const videoDuration = duration(contentDetails.duration);
-    const publishedAt = posted(snippet.publishedAt);
+    const { snippet, statistics, watch, channelLink, videoDuration, publishedAt } = item;
 
     return (
         <div className='list-video-card'>
