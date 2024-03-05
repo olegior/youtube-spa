@@ -1,0 +1,37 @@
+.header {
+    @include d-flex();
+    width: 100%;
+    padding: 0;
+    background-color: #001529;
+
+
+    .ant-layout.header__container.container {
+        background-color: #001529;
+    }
+
+    .header__container.container {
+        padding-block: 0;
+    }
+
+    &__container {
+        @include d-flex(space-between, center, row);
+    }
+
+    &__group {
+        @include d-flex(space-between, center, row);
+        gap: 20px;
+    }
+
+    &__container.container a {
+        padding-inline: 20px;
+    }
+
+    &__logout {
+        color: #1677ff;
+        height: 100%;
+    }
+
+    & &__container &__logout:hover {
+        color: #69b1ff;
+    }
+}

@@ -1,0 +1,12 @@
+.favorites {
+    padding: 20px;
+    background-color: #fff;
+
+    &__list {
+        width: 100%;
+    }
+
+    &__item {
+        cursor: pointer;
+    }
+}

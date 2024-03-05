@@ -1,0 +1,126 @@
+.video-card {
+    margin: 0;
+
+    .ant-image {
+        width: 100%;
+    }
+
+    & .ant-card-body {
+        padding: 10px;
+    }
+
+    &__cover {
+        position: relative;
+    }
+
+    &__duration {
+        color: white;
+        background-color: #0000007d;
+        padding-inline: 2px;
+        width: max-content;
+        position: absolute;
+        z-index: 5;
+        right: 3px;
+        bottom: 10px;
+    }
+
+    &__title {
+        padding-inline: 10px;
+    }
+
+    &__description {
+        @include d-flex(flex-start, flex-start);
+    }
+}
+
+
+.list-video-card {
+    overflow: hidden;
+
+    &__image {
+        max-height: 120px;
+        min-width: 220px;
+    }
+
+    &__info .ant-typography {
+        margin: 0;
+        padding: 0;
+    }
+
+    &__info>.ant-typography:first-child {
+        margin-bottom: 10px;
+    }
+
+
+    &__description {
+        padding-block-start: 10px;
+    }
+
+    &__description .ant-typography:first-child {
+        margin-block-end: 0.5rem;
+    }
+
+
+}
+
+@media (max-width: 700px) {
+    .list-video-card {
+
+        &__info .ant-typography {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            word-wrap: break-word;
+        }
+
+        & .ant-space .ant-space-item:first-child {
+            width: 200px;
+        }
+
+        & .video-card__cover .ant-image {
+            width: 200px;
+        }
+
+        &__image {
+            min-width: 100%;
+        }
+    }
+}
+
+
+
+@media (max-width: 500px) {
+
+    .list-video-card {
+
+        & .ant-space .ant-space-item:first-child {
+            width: 140px;
+        }
+
+        & .video-card__cover .ant-image {
+            width: 140px;
+        }
+
+        &__info {
+            margin: 0;
+        }
+
+        &__info .ant-typography {
+            margin: 0;
+            padding: 0;
+        }
+
+        &__info>.ant-typography:first-child {
+            margin-bottom: 0;
+        }
+
+        &__description {
+            padding-block-start: 0;
+        }
+
+        &__description .ant-typography:first-child {
+            margin-block-end: 0;
+        }
+    }
+}

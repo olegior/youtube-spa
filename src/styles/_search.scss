@@ -1,0 +1,43 @@
+.search {
+    @include d-flex();
+    width: 100%;
+
+    &__title {
+        text-align: start;
+        width: 100%;
+    }
+
+    &__form {
+
+        width: 100%;
+
+        .ant-space-compact {
+            width: 100%;
+        }
+
+        .search__item {
+            position: relative;
+            width: 100%;
+        }
+
+        .search__add {
+            position: absolute;
+            margin: 0;
+            padding: 0;
+            padding-inline: 5px;
+            font-size: 1.5rem;
+            right: 0.25rem;
+            z-index: 5;
+            cursor: pointer;
+        }
+    }
+}
+
+
+.search-page__info {
+    padding-block-end: 20px;
+
+    .active {
+        border: 2px solid #4096FF;
+    }
+}

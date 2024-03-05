@@ -1,0 +1,41 @@
+@import 'mixins', 'font', 'animations', 'header', 'search', 'videocard', 'favorites', 'authorization';
+
+
+*,
+.ant-typography {
+    font-family: 'Roboto', sans-serif;
+}
+
+.layout {
+    @include d-flex();
+
+    width: 100%;
+    min-height: 100dvh;
+    min-width: 320px;
+
+    .container {
+        max-width: 1200px;
+        width: 100%;
+        padding: 20px;
+
+        .container-center {
+            @include d-flex();
+            height: 70dvh;
+
+            .search__title {
+                text-align: center;
+            }
+        }
+    }
+}
+
+input:read-only {
+    background-color: #e8e8e8;
+    border-color: gray;
+}
+
+input:read-only:hover{
+    border-color: gray;
+    background-color: #e8e8e8;
+    cursor: not-allowed ;
+}
